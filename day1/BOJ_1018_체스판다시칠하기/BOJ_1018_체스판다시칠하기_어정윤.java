@@ -18,28 +18,14 @@ public class BOJ_1018_체스판다시칠하기_어정윤 {
         for (int i = 0; i <= n-8; i++) {
             for (int j = 0; j <= m-8; j++) {
                 int cnt = 0;
-                if (board[i][j] == 'B') {
-                    for (int x = 0; x < 8; x++) {
-                        for (int y = 0; y < 8; y++) {
-                            int dx = i + x;
-                            int dy = j + y;
-                            if ((x + y) % 2 == 1 && board[dx][dy] != 'W') {
-                                cnt++;
-                            } else if ((x + y) % 2 == 0 && board[dx][dy] != 'B') {
-                                cnt++;
-                            }
-                        }
-                    }
-                } else if (board[i][j] == 'W') {
-                    for (int x = 0; x < 8; x++) {
-                        for (int y = 0; y < 8; y++) {
-                            int dx = i + x;
-                            int dy = j + y;
-                            if ((x + y) % 2 == 1 && board[dx][dy] != 'B') {
-                                cnt++;
-                            } else if ((x + y) % 2 == 0 && board[dx][dy] != 'W') {
-                                cnt++;
-                            }
+                for (int x = 0; x < 8; x++) {
+                    for (int y = 0; y < 8; y++) {
+                        int dx = i + x;
+                        int dy = j + y;
+                        if ((x + y) % 2 == 1 && board[dx][dy] != 'W') {
+                            cnt++;
+                        } else if ((x + y) % 2 == 0 && board[dx][dy] != 'B') {
+                            cnt++;
                         }
                     }
                 }
