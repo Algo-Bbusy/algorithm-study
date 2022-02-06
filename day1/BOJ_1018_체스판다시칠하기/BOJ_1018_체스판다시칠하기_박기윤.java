@@ -13,7 +13,7 @@ public class BOJ_1018_체스판다시칠하기_박기윤 {
 	static char right_arr1[][];
 	static char right_arr2[][];
 
-	public static int boardSearch(int r, int c) { // 시작 좌표 (r,c)
+	public static int boardSearch(int r, int c) { // 시작 좌표(r,c)
 		int min_count = 32;// 정답의 최대값으로 초기화
 		int count1 = 0;
 		int count2 = 0;
