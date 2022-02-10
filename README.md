@@ -36,3 +36,10 @@
 
 - [BOJ_1018_체스판 다시 칠하기](day1/BOJ_1018_체스판다시칠하기/)
 </details>
+<details>
+    <summary>2일차</summary>
+
+- [BOJ_2116_주사위 쌓기](day2/BOJ_2116_주사위쌓기/)
+- [BOJ_2304_창고 다각형](day2/BOJ_2304_창고다각형/)
+- [BOJ_2309_일곱 난쟁이](day2/BOJ_2309_일곱난쟁이/)
+</details>
