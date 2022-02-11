@@ -6,13 +6,14 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 
 public class BOJ_2309_일곱난쟁이_박기윤 {
+	static final int N = 7;
 	static int height[];
 	static boolean isSelected[];
-	static int selectedHeight[] = new int[7];
+	static int selectedHeight[] = new int[N];
 	static int size;
 
 	public static void find(int count, int start, int sum) {
-		if (count == 7) {
+		if (count == N) {
 			if (sum == 100) {
 				int i = 0, j = 0;
 				while (i < size) {
@@ -42,7 +43,7 @@ public class BOJ_2309_일곱난쟁이_박기윤 {
 		}
 		isSelected = new boolean[9];
 		find(0, 0, 0);
-		for (int i = 0; i < 7; i++)
+		for (int i = 0; i < N; i++)
 			sb.append(selectedHeight[i] + "\n");
 		System.out.println(sb.toString());
 	}
