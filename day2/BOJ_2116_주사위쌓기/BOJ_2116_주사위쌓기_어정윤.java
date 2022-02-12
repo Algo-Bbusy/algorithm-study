@@ -1,13 +1,12 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class BOJ_2116_주사위쌓기_어정윤 {
 
-    private static List<int[]> dices;
+    private static int[][] dices;
     private static int[][] sides;
     private static int under;
     private static int max;
@@ -17,7 +16,7 @@ public class BOJ_2116_주사위쌓기_어정윤 {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer stringTokenizer;
         n = Integer.parseInt(bufferedReader.readLine());
-        dices = new ArrayList<>();
+        dices = new int[n][6];
         for (int i = 0; i < n; i++) {
             stringTokenizer = new StringTokenizer(bufferedReader.readLine());
             int a = Integer.parseInt(stringTokenizer.nextToken());
@@ -26,7 +25,7 @@ public class BOJ_2116_주사위쌓기_어정윤 {
             int d = Integer.parseInt(stringTokenizer.nextToken());
             int e = Integer.parseInt(stringTokenizer.nextToken());
             int f = Integer.parseInt(stringTokenizer.nextToken());
-            dices.add(new int[]{a, f, b, d, c, e});
+            dices[i] = new int[]{a, f, b, d, c, e};
         }
 
         sides = new int[n][4];
@@ -35,9 +34,9 @@ public class BOJ_2116_주사위쌓기_어정윤 {
             for (int j = 0; j < n; j++) {
                 int cnt = 0;
                 if (underIdx % 2 == 0) {
-                    under = dices.get(j)[++underIdx];
+                    under = dices[j][++underIdx];
                 } else {
-                    under = dices.get(j)[--underIdx];
+                    under = dices[j][--underIdx];
                 }
 
                 for (int k = 0; k < 6; k++) {
@@ -48,32 +47,31 @@ public class BOJ_2116_주사위쌓기_어정윤 {
                         overIdx = underIdx - 1;
                     }
                     if (k != underIdx && k != overIdx) {
-                        sides[j][cnt++] = dices.get(j)[k];
+                        sides[j][cnt++] = dices[j][k];
                     }
                 }
 
                 if (j < n-1) {
                     for (int k = 0; k < 6; k++) {
-                        if (dices.get(j+1)[k] == under) {
+                        if (dices[j+1][k] == under) {
                             underIdx = k;
                             break;
                         }
                     }
                 }
-
             }
-            repeatedPermutation(0, 0);
+            getMax();
         }
         System.out.println(max);
     }
 
-    private static void repeatedPermutation(int cnt, int sum) {
-        if (cnt == n) {
-            max = Math.max(max, sum);
-            return;
+    private static void getMax() {
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            sum += Arrays.stream(sides[i])
+                    .max()
+                    .getAsInt();
         }
-        for (int i = 0; i < 4; i++) {
-            repeatedPermutation(cnt+1, sum+sides[cnt][i]);
-        }
+        max = Math.max(max, sum);
     }
 }
