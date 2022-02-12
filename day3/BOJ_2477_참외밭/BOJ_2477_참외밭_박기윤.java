@@ -34,7 +34,7 @@ public class BOJ_2477_참외밭_박기윤 {
 		int dirCount[] = new int[5];
 		dirList = new ArrayList<>();
 		lengthList = new ArrayList<>();
-		int long_width = 0; 
+		int long_width = 0;
 		int long_height = 0;
 		for (int i = 0; i < 6; i++) {
 			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
@@ -50,19 +50,14 @@ public class BOJ_2477_참외밭_박기윤 {
 		}
 
 		int smallArea = 0;
-		if (dirCount[1] == 2 && dirCount[3] == 2) {
-			int westIdx = find(2);
-			smallArea = getSmallArea(westIdx);
-		} else if (dirCount[1] == 2 && dirCount[4] == 2) {
-			int SouthIdx = find(3);
-			smallArea = getSmallArea(SouthIdx);
-		} else if (dirCount[2] == 2 && dirCount[4] == 2) {
-			int EastIdx = find(1);
-			smallArea = getSmallArea(EastIdx);
-		} else {
-			int NorthIdx = find(4);
-			smallArea = getSmallArea(NorthIdx);
-		}
+		if (dirCount[1] == 2 && dirCount[3] == 2)
+			smallArea = getSmallArea(find(2));
+		else if (dirCount[1] == 2 && dirCount[4] == 2)
+			smallArea = getSmallArea(find(3));
+		else if (dirCount[2] == 2 && dirCount[4] == 2)
+			smallArea = getSmallArea(find(1));
+		else
+			smallArea = getSmallArea(find(4));
 
 		int bigArea = long_width * long_height;
 		bw.write(Integer.toString((bigArea - smallArea) * K));
