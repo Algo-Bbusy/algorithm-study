@@ -28,7 +28,6 @@ public class BOJ_14696_딱지놀이_박기윤 {
 					shape[j][tmp]++;
 				}
 			}
-
 			int shape_num = 4;
 			while (true) {
 				if (shape_num < 1) {
