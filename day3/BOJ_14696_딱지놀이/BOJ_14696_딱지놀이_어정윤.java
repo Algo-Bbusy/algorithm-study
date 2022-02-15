@@ -5,17 +5,15 @@ import java.util.StringTokenizer;
 
 public class BOJ_14696_딱지놀이_어정윤 {
 
-    private static final int ROUND = 2;
     private static final int CARD_TYPE = 4;
 
     private static int[] playerA;
     private static int[] playerB;
-    private static int n;
 
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer stringTokenizer;
-        n = Integer.parseInt(bufferedReader.readLine());
+        int n = Integer.parseInt(bufferedReader.readLine());
         for (int i = 0; i < n; i++) {
             playerA = new int[CARD_TYPE+1];
             playerB = new int[CARD_TYPE+1];
