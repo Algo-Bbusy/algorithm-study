@@ -6,18 +6,15 @@ import java.util.StringTokenizer;
 
 public class BOJ_2116_주사위쌓기_어정윤 {
 
-    private static int[][] dices;
-    private static int[][] sides;
-    private static int under;
     private static int max;
-    private static int n;
 
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer stringTokenizer;
-        n = Integer.parseInt(bufferedReader.readLine());
-        dices = new int[n][6];
-        for (int i = 0; i < n; i++) {
+
+        int diceNum = Integer.parseInt(bufferedReader.readLine());
+        int[][] dices = new int[diceNum][6];
+        for (int i = 0; i < diceNum; i++) {
             stringTokenizer = new StringTokenizer(bufferedReader.readLine());
             int a = Integer.parseInt(stringTokenizer.nextToken());
             int b = Integer.parseInt(stringTokenizer.nextToken());
@@ -28,50 +25,36 @@ public class BOJ_2116_주사위쌓기_어정윤 {
             dices[i] = new int[]{a, f, b, d, c, e};
         }
 
-        sides = new int[n][4];
-        int underIdx = 0;
         for (int i = 0;i < 6;i++) {
-            for (int j = 0; j < n; j++) {
-                int cnt = 0;
-                if (underIdx % 2 == 0) {
-                    under = dices[j][++underIdx];
+            int sideMaxSum = 0;
+            int overIdx = i;
+            for (int j = 0; j < diceNum; j++) {
+                int underIdx;
+                if (overIdx % 2 == 0) {
+                    underIdx = overIdx+1;
                 } else {
-                    under = dices[j][--underIdx];
+                    underIdx = overIdx-1;
                 }
-
+                int under = dices[j][underIdx];
+                int sideMax = 0;
                 for (int k = 0; k < 6; k++) {
-                    int overIdx;
-                    if (underIdx % 2 == 0) {
-                        overIdx = underIdx + 1;
-                    } else {
-                        overIdx = underIdx - 1;
-                    }
                     if (k != underIdx && k != overIdx) {
-                        sides[j][cnt++] = dices[j][k];
+                        sideMax = Math.max(sideMax, dices[j][k]);
                     }
                 }
+                sideMaxSum += sideMax;
 
-                if (j < n-1) {
+                if (j < diceNum-1) {
                     for (int k = 0; k < 6; k++) {
                         if (dices[j+1][k] == under) {
-                            underIdx = k;
+                            overIdx = k;
                             break;
                         }
                     }
                 }
             }
-            getMax();
+            max = Math.max(max, sideMaxSum);
         }
         System.out.println(max);
-    }
-
-    private static void getMax() {
-        int sum = 0;
-        for (int i = 0; i < n; i++) {
-            sum += Arrays.stream(sides[i])
-                    .max()
-                    .getAsInt();
-        }
-        max = Math.max(max, sum);
     }
 }
