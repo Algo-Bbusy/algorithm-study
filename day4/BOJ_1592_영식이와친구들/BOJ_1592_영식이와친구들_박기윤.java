@@ -1,4 +1,4 @@
-package BOJ;
+package Day4;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -23,10 +23,10 @@ public class BOJ_1592_영식이와친구들_박기윤 {
 		while (true) {
 			if(++getBall[to]==M) break;
 			from=to;
-			count++;	
 			to = getBall[from] % 2 == 1 ? from + L : from - L;
 			if(to>N) to%=N;
 			else if (to<=0) to+=N;
+			count++;
 		}
 		
 		bw.write(Integer.toString(count));
