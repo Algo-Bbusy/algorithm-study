@@ -34,7 +34,6 @@ public class BOJ_2635_수이어가기_박기윤 {
 				break;
 			}
 		}
-		
 		sb.append(numbers.size() + "\n");
 		numbers.forEach(n -> sb.append(n + " "));
 		System.out.println(sb.toString());
