@@ -59,3 +59,26 @@
 - [BOJ_2605_줄 세우기](day4/BOJ_2605_줄세우기/)
 - [BOJ_13300_방배정](day4/BOJ_13300_방배정/)
 </details>
+<details>
+    <summary>5일차</summary>
+
+- [BOJ_2527_직사각형](day5/BOJ_2527_직사각형/)
+- [BOJ_2559_수열](day5/BOJ_2559_수열/)
+- [BOJ_2578_빙고](day5/BOJ_2578_빙고/)
+- [BOJ_2628_종이자르기](day5/BOJ_2628_종이자르기/)
+</details>
+<details>
+    <summary>6일차</summary>
+
+- [BOJ_2635_수 이어가기](day6/BOJ_2635_수이어가기/)
+- [BOJ_10157_자리배정](day6/BOJ_10157_자리배정/)
+- [BOJ_10158_개미](day6/BOJ_10158_개미/)
+- [BOJ_10163_색종이](day6/BOJ_10163_색종이/)
+</details>
+<details>
+    <summary>7일차</summary>
+
+- [BOJ_2508_사탕 박사 고창영](day7/BOJ_2508_사탕박사고창영/)
+- [BOJ_10250_ACM 호텔](day7/BOJ_10250_ACM호텔/)
+- [BOJ_14503_로봇 청소기](day7/BOJ_14503_로봇청소기/)
+</details>
