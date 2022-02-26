@@ -21,6 +21,7 @@ public class Java_10158 {
 //	static int t,p,q;
 //	static int moveX,moveY;
 //	static int[][] map;
+	
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
