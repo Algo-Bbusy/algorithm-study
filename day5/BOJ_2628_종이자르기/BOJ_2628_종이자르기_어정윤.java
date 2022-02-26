@@ -7,45 +7,50 @@ import java.util.StringTokenizer;
 
 public class BOJ_2628_종이자르기_어정윤 {
 
-    private static final int NORTH = 1;
-    private static final int SOUTH = 2;
-    private static final int WEST = 3;
+    private static final List<Integer> WIDTH_CUTS = new ArrayList<>();
+    private static final List<Integer> HEIGHT_CUTS = new ArrayList<>();
+    private static final int WIDTH = 0;
 
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
         int width = Integer.parseInt(stringTokenizer.nextToken());
         int height = Integer.parseInt(stringTokenizer.nextToken());
-        int edge = height * 2 + width * 2;
-        int marketNum = Integer.parseInt(bufferedReader.readLine());
 
-        List<Integer> space = new ArrayList<>();
-        for (int i = 0; i < marketNum+1; i++) {
+        int n = Integer.parseInt(bufferedReader.readLine());
+        for (int i = 0; i < n; i++) {
             stringTokenizer = new StringTokenizer(bufferedReader.readLine());
             int direction = Integer.parseInt(stringTokenizer.nextToken());
             int position = Integer.parseInt(stringTokenizer.nextToken());
-            space.add(getDistance(width, height, direction, position));
+            if (direction == WIDTH) {
+                HEIGHT_CUTS.add(position);
+            } else {
+                WIDTH_CUTS.add(position);
+            }
         }
-        int donggeun = space.get(space.size()-1);
-        int result = 0;
-        for (int i = 0; i < marketNum; i++) {
-            int wayToMarket = Math.abs(donggeun - space.get(i));
-            result += Math.min(wayToMarket, edge - wayToMarket);
-        }
-        System.out.println(result);
+
+        WIDTH_CUTS.add(0);
+        WIDTH_CUTS.add(width);
+        HEIGHT_CUTS.add(0);
+        HEIGHT_CUTS.add(height);
+        WIDTH_CUTS.sort(Integer::compareTo);
+        HEIGHT_CUTS.sort(Integer::compareTo);
+
+        System.out.println(getMaxArea());
     }
 
-    private static int getDistance(int width, int height, int direction, int position) {
-        int distance = 0;
-        if (direction == NORTH) {
-            distance = position;
-        } else if (direction == SOUTH) {
-            distance = width * 2 + height - position;
-        } else if (direction == WEST) {
-            distance = width * 2 + height * 2 - position;
-        } else {
-            distance = width + position;
+    private static int getMaxArea() {
+        int maxArea = 0;
+        int preWidth = 0;
+        int preHeight = 0;
+        for (int currentWidth : WIDTH_CUTS) {
+            for (int currentHeight : HEIGHT_CUTS) {
+                int area = (currentHeight - preHeight) * (currentWidth - preWidth);
+                preHeight = currentHeight;
+                maxArea = Math.max(maxArea, area);
+            }
+            preWidth = currentWidth;
         }
-        return distance;
+        return maxArea;
     }
 }
