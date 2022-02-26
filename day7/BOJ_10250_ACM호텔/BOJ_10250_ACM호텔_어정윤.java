@@ -19,11 +19,7 @@ public class BOJ_10250_ACM호텔_어정윤 {
                 floor = height;
             }
             int room = (int) Math.ceil((double) guest / height);
-            stringBuilder.append(floor);
-            if (room < 10) {
-                stringBuilder.append(0);
-            }
-            stringBuilder.append(room)
+            stringBuilder.append(floor * 100 + room)
                     .append("\n");
         }
         System.out.println(stringBuilder);
