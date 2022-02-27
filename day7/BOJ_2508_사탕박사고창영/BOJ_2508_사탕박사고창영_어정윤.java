@@ -5,8 +5,10 @@ import java.util.StringTokenizer;
 
 public class BOJ_2508_사탕박사고창영_어정윤 {
 
-    private static final int[][] DELTAS = {{0, -1}, {0, 1}, {-1, 0}, {1, 0}};
-    private static final char[] WRAPPER = {'>', '<', 'v', '^'};
+    private static final char LEFT = '>';
+    private static final char RIGHT = '<';
+    private static final char UP = 'v';
+    private static final char DOWN = '^';
 
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
@@ -30,19 +32,15 @@ public class BOJ_2508_사탕박사고창영_어정윤 {
             for (int x = 0; x < r; x++) {
                 for (int y = 0; y < c; y++) {
                     if (box[x][y] == 'o') {
-                        for (int k = 0; k < DELTAS.length; k += 2) {
-                            boolean isCandy = true;
-                            for (int l = k; l < k + 2; l++) {
-                                int dx = x + DELTAS[l][0];
-                                int dy = y + DELTAS[l][1];
-                                if (dx < 0 || dx >= r || dy < 0 || dy >= c || box[dx][dy] != WRAPPER[l]) {
-                                    isCandy = false;
-                                    break;
-                                }
-                            }
-                            if (isCandy) {
-                                candy++;
-                            }
+                        int left = y - 1;
+                        int right = y + 1;
+                        int up = x - 1;
+                        int down = x + 1;
+                        if (left >= 0 && right < c && box[x][left] == LEFT && box[x][right] == RIGHT) {
+                            candy++;
+                        }
+                        if (up >= 0 && down < r && box[up][y] == UP && box[down][y] == DOWN) {
+                            candy++;
                         }
                     }
                 }
