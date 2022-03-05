@@ -64,7 +64,7 @@ public class Java_4963_fail {
 			int ny=y+dy[d];
 			int nx=x+dx[d];
 			if(ny>=0 && nx>=0 && ny<H && nx<W) {				
-				if(map[ny][nx]==1 && visited[y][x]==false) dfs(ny,nx);
+				if(map[ny][nx]==1 && visited[ny][nx]==false) dfs(ny,nx);
 			}
 		}
 	}
