@@ -52,9 +52,7 @@ public class BOJ_18352_특정거리의도시찾기_어정윤 {
         Queue<Integer> queue = new LinkedList<>();
         queue.offer(start);
         visited[start] = true;
-        int cnt = 0;
         while (!queue.isEmpty()) {
-            cnt++;
             int current = queue.poll();
             for (int next : graph[current]) {
                 if (!visited[next]) {
