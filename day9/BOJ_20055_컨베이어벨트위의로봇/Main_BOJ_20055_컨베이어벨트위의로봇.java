@@ -5,7 +5,6 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main_BOJ_20055_컨베이어벨트위의로봇 {
@@ -33,7 +32,8 @@ public class Main_BOJ_20055_컨베이어벨트위의로봇 {
 			for (int i = N - 1; i > 0; i--) {
 				robot[i] = robot[i - 1];
 			}
-			robot[0] = robot[N - 1] = false;
+			robot[0] = false;
+			robot[N - 1] = false;
 
 			// step 2. 가장 먼저 벨트에 올라간 로봇부터, 벨트가 회전하는 방향으로 한 칸 이동할 수 있다면 이동
 			for (int i = N - 1; i > 0; i--) {
@@ -51,13 +51,11 @@ public class Main_BOJ_20055_컨베이어벨트위의로봇 {
 			}
 
 			// step 4. 내구도가 0인 칸의 개수가 K개 이상이라면 과정을 종료
-//			int count = 0;
-//			for (int i = 0; i < 2 * N; i++) {
-//				if (belt[i] == 0)
-//					count++;
-//			}
-			
-			int count=(int) Arrays.stream(belt).filter(n->n==0).count();
+			int count = 0;
+			for (int i = 0; i < 2 * N; i++) {
+				if (belt[i] == 0)
+					count++;
+			}
 			if (count >= K)
 				break;
 
@@ -68,6 +66,5 @@ public class Main_BOJ_20055_컨베이어벨트위의로봇 {
 		br.close();
 		bw.flush();
 		bw.close();
-
 	}
 }
