@@ -13,6 +13,7 @@ public class BOJ_3187_양치기꿍_어정윤 {
     private static final char SHEEP = 'k';
     private static final char VISIT = 'x';
 
+    private static char[][] space;
     private static int r;
     private static int c;
     private static int wolves;
@@ -24,7 +25,7 @@ public class BOJ_3187_양치기꿍_어정윤 {
         StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
         r = Integer.parseInt(stringTokenizer.nextToken());
         c = Integer.parseInt(stringTokenizer.nextToken());
-        char[][] space = new char[r][c];
+        space = new char[r][c];
         for (int i = 0; i < r; i++) {
             String inputLine = bufferedReader.readLine();
             for (int j = 0; j < c; j++) {
@@ -41,7 +42,7 @@ public class BOJ_3187_양치기꿍_어정윤 {
         for (int i = 0; i < r; i++) {
             for (int j = 0; j < c; j++) {
                 if (space[i][j] != FENCE && space[i][j] != VISIT) {
-                    searchArea(space, i, j);
+                    searchArea(i, j);
                 }
             }
         }
@@ -52,7 +53,7 @@ public class BOJ_3187_양치기꿍_어정윤 {
         System.out.println(stringBuilder);
     }
 
-    private static void searchArea(char[][] space, int startX, int startY) {
+    private static void searchArea(int startX, int startY) {
         Queue<int[]> queue = new LinkedList<>();
         queue.offer(new int[]{startX, startY});
         int wolfCnt = 0;
