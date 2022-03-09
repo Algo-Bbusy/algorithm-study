@@ -49,19 +49,21 @@ public class Main_BOJ_8983_사냥꾼 {
 		int huntCnt = 0;
 		// 첫번째 동물 x좌표와 x좌표가 가장 가까운 사대 찾기
 		int gunIdx = findNearestGun(animalLoc[0][0], 0);
-		
+
 		for (int i = 0; i < N; i++) {
-			int distance=getDist(gunIdx, i);
+			if (animalLoc[i][1] > L) continue;
+
+			int distance = getDist(gunIdx, i);
 			if (distance <= L) huntCnt++;
-					
+
 			else {
-				gunIdx=findNearestGun(animalLoc[i][0], gunIdx);
-				distance=getDist(gunIdx, i);
+				gunIdx = findNearestGun(animalLoc[i][0], gunIdx);
+				distance = getDist(gunIdx, i);
 				if (distance <= L) huntCnt++;
 				else continue;
 			}
 		}
-		
+
 		bw.write(Integer.toString(huntCnt));
 		br.close();
 		bw.flush();
