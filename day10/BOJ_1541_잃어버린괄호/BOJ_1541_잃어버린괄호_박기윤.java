@@ -5,7 +5,8 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.Stack;
+import java.util.Deque;
+import java.util.LinkedList;
 
 public class BOJ_1541_잃어버린괄호_박기윤 {
 	static int idx;
@@ -27,7 +28,7 @@ public class BOJ_1541_잃어버린괄호_박기윤 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		String input = br.readLine();
-		Stack<Integer> operand = new Stack<>();
+		Deque<Integer> operand = new LinkedList<>();
 
 		int length = input.length();
 		idx = -1;
@@ -36,21 +37,18 @@ public class BOJ_1541_잃어버린괄호_박기윤 {
 			if (cur == '-') {
 				continue;
 			} else if (cur == '+') {
-				int pre = operand.pop();
+				int pre = operand.removeLast();
 				int next = getNum(input);
-				operand.push(pre + next);
+				operand.addLast(pre + next);
 			} else {
 				int curNum = getNum(input);
-				operand.push(curNum);
+				operand.addLast(curNum);
 			}
 		}
 
-		int sSize = operand.size();
-		int popNum = 0;
-		int result = 0;
+		int result = operand.removeFirst();
 		while (!operand.isEmpty()) {
-			int num = ++popNum == sSize ? operand.pop() : operand.pop() * (-1);
-			result += num;
+			result -= operand.removeFirst();
 		}
 
 		bw.write(Integer.toString(result));
