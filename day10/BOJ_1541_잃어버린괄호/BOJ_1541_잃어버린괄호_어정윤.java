@@ -11,46 +11,25 @@ public class BOJ_1541_잃어버린괄호_어정윤 {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         String formula = bufferedReader.readLine();
         int answer = 0;
-        if (!formula.contains("-")) {
-            String[] split = formula.split("\\+");
-            System.out.println(Arrays.toString(split));
-            answer = Arrays.stream(split)
-                    .filter(s -> !s.equals("+"))
-                    .mapToInt(Integer::parseInt)
-                    .sum();
-        } else if (!formula.contains("+")) {
-            String[] split = formula.split("-");
-            answer = Integer.parseInt(split[0]);
-            for (int i = 1; i < split.length; i++) {
-                if (!split[i].equals("-")) {
-                    answer -= Integer.parseInt(split[i]);
-                }
-            }
-        } else {
-            String[] numbers = formula.split("\\+|-");
+        String[] numbers = formula.split("[+|-]");
+        Stack<String> subtractions = new Stack<>();
 
-            int numberIdx = 0;
-            List<Integer> subtractions = new ArrayList<>();
-            int sum = 0;
-            for (int i = 0; i < formula.length(); i++) {
-                if (formula.charAt(i) == '+') {
-                    sum += Integer.parseInt(numbers[numberIdx++]);
-                    if (numberIdx == numbers.length-1) {
-                        sum += Integer.parseInt(numbers[numberIdx]);
-                        subtractions.add(sum);
-                    }
-                } else if (formula.charAt(i) == '-') {
-                    subtractions.add(Integer.parseInt(numbers[numberIdx++]));
-                    if (numberIdx == numbers.length-1) {
-                        subtractions.add(Integer.parseInt(numbers[numberIdx]));
-                    }
-                }
+        int numberIdx = 0;
+        subtractions.push(numbers[numberIdx++]);
+        int nextOperator = subtractions.peek().length();
+        while (nextOperator < formula.length()) {
+            if (formula.charAt(nextOperator) == '+') {
+                subtractions.push(String.valueOf(Integer.parseInt(subtractions.pop()) + Integer.parseInt(numbers[numberIdx])));
+            } else {
+                subtractions.push(numbers[numberIdx]);
             }
-            answer = subtractions.get(0);
-            for (int i = 1; i < subtractions.size(); i++) {
-                answer -= subtractions.get(i);
-            }
+            nextOperator += String.valueOf(numbers[numberIdx++]).length() + 1;
         }
+
+        for (int i = subtractions.size(); i > 1; i--) {
+            answer -= Integer.parseInt(subtractions.pop());
+        }
+        answer += Integer.parseInt(subtractions.pop());
         System.out.println(answer);
     }
 }
