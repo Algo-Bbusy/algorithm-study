@@ -8,7 +8,7 @@ import java.io.OutputStreamWriter;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Main_BOJ_14500_테트로미노_박기윤 {
+public class BOJ_14500_테트로미노_박기윤 {
 	static int[][] paper;
 	static int N, M;
 	static int maxSum;
@@ -74,8 +74,6 @@ public class Main_BOJ_14500_테트로미노_박기윤 {
 	public static void dfs(int r, int c, int count, int sum, boolean isVisited[][]) {
 		if (count == 4) {
 			maxSum = Math.max(maxSum, sum);
-			count--;
-			sum -= paper[r][c];
 			return;
 		}
 		isVisited[r][c] = true;
