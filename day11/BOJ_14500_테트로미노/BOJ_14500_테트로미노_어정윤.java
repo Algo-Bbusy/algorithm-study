@@ -26,11 +26,12 @@ public class BOJ_14500_테트로미노_어정윤 {
             }
         }
 
+        isVisited = new boolean[n][m];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                isVisited = new boolean[n][m];
                 isVisited[i][j] = true;
                 dfs(i, j, 0, 0);
+                isVisited[i][j] = false;
                 searchZBlock(i, j);
             }
         }
@@ -38,22 +39,22 @@ public class BOJ_14500_테트로미노_어정윤 {
         System.out.println(maxSum);
     }
 
-    private static void searchZBlock(int i, int j) {
+    private static void searchZBlock(int x, int y) {
         // ㅜ
-        if (i + 1 < n && j + 2 < m) {
-            maxSum = Math.max(maxSum, paper[i][j] + paper[i][j + 1] + paper[i][j + 2] + paper[i + 1][j + 1]);
+        if (x + 1 < n && y + 2 < m) {
+            maxSum = Math.max(maxSum, paper[x][y] + paper[x][y + 1] + paper[x][y + 2] + paper[x + 1][y + 1]);
         }
         // ㅓ
-        if (i + 2 < n && j - 1 >= 0) {
-            maxSum = Math.max(maxSum, paper[i][j] + paper[i + 1][j] + paper[i + 2][j] + paper[i + 1][j - 1]);
+        if (x + 2 < n && y - 1 >= 0) {
+            maxSum = Math.max(maxSum, paper[x][y] + paper[x + 1][y] + paper[x + 2][y] + paper[x + 1][y - 1]);
         }
         // ㅗ
-        if (i - 1 >= 0 && j + 2 < m) {
-            maxSum = Math.max(maxSum, paper[i][j] + paper[i][j + 1] + paper[i][j + 2] + paper[i - 1][j + 1]);
+        if (x - 1 >= 0 && y + 2 < m) {
+            maxSum = Math.max(maxSum, paper[x][y] + paper[x][y + 1] + paper[x][y + 2] + paper[x - 1][y + 1]);
         }
         // ㅏ
-        if (i + 2 < n && j + 1 < m) {
-            maxSum = Math.max(maxSum, paper[i][j] + paper[i + 1][j] + paper[i + 2][j] + paper[i + 1][j + 1]);
+        if (x + 2 < n && y + 1 < m) {
+            maxSum = Math.max(maxSum, paper[x][y] + paper[x + 1][y] + paper[x + 2][y] + paper[x + 1][y + 1]);
         }
     }
 
