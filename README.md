@@ -118,5 +118,11 @@
     <summary>11일차</summary>
 
 - [BOJ_14500_테트로미노](day11/BOJ_14500_테트로미노/)
-- [BOJ_14889_스타트와링크](day11/BOJ_14889_스타트와링크/)
+- [BOJ_14889_스타트와 링크](day11/BOJ_14889_스타트와링크/)
+</details>
+<details>
+    <summary>12일차</summary>
+
+- [BOJ_2468_안전 영역](day12/BOJ_2468_안전영역/)
+- [BOJ_14499_주사위 굴리기](day12/BOJ_14499_주사위굴리기/)
 </details>
