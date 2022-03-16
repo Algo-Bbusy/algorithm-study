@@ -32,14 +32,14 @@ public class BOJ_14500_테트로미노_어정윤 {
                 isVisited[i][j] = true;
                 dfs(i, j, 0, 0);
                 isVisited[i][j] = false;
-                searchZBlock(i, j);
+                searchLastBlock(i, j);
             }
         }
 
         System.out.println(maxSum);
     }
 
-    private static void searchZBlock(int x, int y) {
+    private static void searchLastBlock(int x, int y) {
         // ㅜ
         if (x + 1 < n && y + 2 < m) {
             maxSum = Math.max(maxSum, paper[x][y] + paper[x][y + 1] + paper[x][y + 2] + paper[x + 1][y + 1]);
