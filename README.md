@@ -126,3 +126,9 @@
 - [BOJ_2468_안전 영역](day12/BOJ_2468_안전영역/)
 - [BOJ_14499_주사위 굴리기](day12/BOJ_14499_주사위굴리기/)
 </details>
+<details>
+    <summary>13일차</summary>
+
+- [BOJ_12904_A와 B](day13/BOJ_12904_A와B/)
+- [BOJ_16234_인구 이동](day13/BOJ_16234_인구이동/)
+</details>
