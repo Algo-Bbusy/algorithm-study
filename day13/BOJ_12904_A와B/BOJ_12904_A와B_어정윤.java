@@ -10,12 +10,25 @@ public class BOJ_12904_A와B_어정윤 {
         String t = bufferedReader.readLine();
         int lastIndex = t.length() - 1;
         int sLength = s.length();
+        boolean isLast = true;
         while (t.length() != sLength) {
-            char lastCharacter = t.charAt(lastIndex);
-            t = t.substring(0, lastIndex--);
-            if (lastCharacter == 'B') {
-                t = new StringBuffer(t).reverse().toString();
+            char lastCharacter;
+            if (isLast) {
+                lastCharacter = t.charAt(lastIndex);
+                t = t.substring(0, lastIndex);
+            } else {
+                lastCharacter = t.charAt(0);
+                t = t.substring(1);
             }
+            lastIndex--;
+
+            if (lastCharacter == 'B'){
+                isLast = !isLast;
+            }
+        }
+
+        if (!isLast) {
+            t = new StringBuffer(t).reverse().toString();
         }
 
         if (t.equals(s)) {
