@@ -11,7 +11,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class Main_BOJ_16234_인구이동_박기윤 {
+public class BOJ_16234_인구이동_박기윤 {
 	static int population[][];
 	static boolean isBorderOpened[][];
 	static int N, L, R;
