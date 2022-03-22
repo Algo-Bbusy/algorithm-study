@@ -21,7 +21,7 @@ public class BOJ_12904_A와B {
 		for(int i = 0; i < Tlen; i++) {
 			if (T.charAt(T.length() - 1) == 'A') {
 				T = T.substring(0, T.length() - 1);
-			} else if (T.charAt(T.length() - 1) == 'B') {
+                        } else {
 				T = T.substring(0, T.length() - 1);
 				StringBuffer sb = new StringBuffer(T);
 				T = sb.reverse().toString();
