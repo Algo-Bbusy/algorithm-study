@@ -54,9 +54,7 @@ public class BOJ_16234_인구이동_어정윤 {
                                     isVisited[dx][dy] = true;
                                     int[] next = {dx, dy};
                                     queue.offer(next);
-                                    if (!closeCountry.contains(next)) {
-                                        closeCountry.add(next);
-                                    }
+                                    closeCountry.add(next);
                                 }
                             }
                         }
