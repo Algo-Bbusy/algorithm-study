@@ -132,3 +132,9 @@
 - [BOJ_12904_A와 B](day13/BOJ_12904_A와B/)
 - [BOJ_16234_인구 이동](day13/BOJ_16234_인구이동/)
 </details>
+<details>
+    <summary>14일차</summary>
+
+- [BOJ_1167_트리의 지름](day14/BOJ_1167_트리의지름/)
+- [BOJ_3190_뱀](day14/BOJ_3190_뱀/)
+</details>
