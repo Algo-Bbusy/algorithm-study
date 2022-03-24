@@ -21,25 +21,22 @@ public class BOJ_16234_인구이동_어정윤 {
             }
         }
 
-        List<int[]> closeCountry = new ArrayList<>();
-        System.out.println(migrate(n, l, r, land, closeCountry));
+        System.out.println(migrate(n, l, r, land));
     }
 
-    private static int getMigrationDay(int n, int l, int r, int[][] land, List<int[]> closeCountry) {
+    private static int migrate(int n, int l, int r, int[][] land) {
+        List<int[]> closeCountry = new ArrayList<>();
         int day = 0;
-        boolean canMigrate = false;
         boolean[][] isVisited;
+        int[][] copiedLand = new int[n][n];
         while (true) {
-            int[][] copyLand = new int[n][n];
+            boolean canMigrate = false;
             for (int i = 0; i < n; i++) {
-                for (int j = 0; j < n; j++) {
-                    copyLand[i][j] = land[i][j];
-                }
+                copiedLand[i] = Arrays.copyOf(land[i], n);
             }
-
+            isVisited = new boolean[n][n];
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
-                    isVisited = new boolean[n][n];
                     Queue<int[]> queue = new LinkedList<>();
                     queue.offer(new int[]{i, j});
                     while (!queue.isEmpty()) {
@@ -66,16 +63,17 @@ public class BOJ_16234_인구이동_어정윤 {
                     }
                     if (!closeCountry.isEmpty()) {
                         closeCountry.add(new int[]{i, j});
+                        int[][] finalLand = land;
                         int sum = closeCountry.stream()
-                                .mapToInt(location -> copyLand[location[0]][location[1]])
+                                .mapToInt(location -> finalLand[location[0]][location[1]])
                                 .sum();
                         int closeCountryCount = closeCountry.size();
-                        closeCountry.forEach(location -> copyLand[location[0]][location[1]] = sum / closeCountryCount);
+                        closeCountry.forEach(location -> copiedLand[location[0]][location[1]] = sum / closeCountryCount);
                         closeCountry.clear();
                     }
                 }
             }
-            land = copyLand;
+            land = Arrays.copyOf(copiedLand, n);
             if (!canMigrate) {
                 return day;
             }
