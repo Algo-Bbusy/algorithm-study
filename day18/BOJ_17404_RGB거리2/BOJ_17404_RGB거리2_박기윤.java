@@ -48,9 +48,10 @@ public class BOJ_17404_RGB거리2_박기윤 {
 		}
 
 		int min = INF;
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < 3; i++) {
 			min = Math.min(min, ans[i]);
-
+		}
+		
 		bw.write(Integer.toString(min));
 		br.close();
 		bw.flush();
