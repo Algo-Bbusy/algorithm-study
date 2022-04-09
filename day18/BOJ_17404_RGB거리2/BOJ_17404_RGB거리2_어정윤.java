@@ -28,6 +28,6 @@ public class BOJ_17404_RGB거리2_어정윤 {
             }
             minCost = Math.min(minCost, Math.min(costs[n][(i + 1) % 3], costs[n][(i + 2) % 3]));
         }
-        System.out.println(Math.min(Math.min(costs[n][0], costs[n][1]), costs[n][2]));
+        System.out.println(minCost);
     }
 }
