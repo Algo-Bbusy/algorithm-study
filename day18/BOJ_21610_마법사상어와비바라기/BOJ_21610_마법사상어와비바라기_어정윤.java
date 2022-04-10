@@ -39,10 +39,8 @@ public class BOJ_21610_마법사상어와비바라기_어정윤 {
             int moveNum = Integer.parseInt(stringTokenizer.nextToken());
             for (int[] cloud : clouds) {
                 // 1. 모든 구름이 di 방향으로 si칸 이동
-                for (int k = 0; k < moveNum; k++) {
-                    cloud[0] = (cloud[0] + deltas[direction][0]) % n;
-                    cloud[1] = (cloud[1] + deltas[direction][1]) % n;
-                }
+                cloud[0] = (cloud[0] + deltas[direction][0] * moveNum) % n;
+                cloud[1] = (cloud[1] + deltas[direction][1] * moveNum) % n;
                 // 2. 각 구름에서 비가 내려 구름이 있는 칸의 바구니에 저장된 물의 양 1 증가
                 map[cloud[0]][cloud[1]]++;
                 // 3. 구름이 사라짐
