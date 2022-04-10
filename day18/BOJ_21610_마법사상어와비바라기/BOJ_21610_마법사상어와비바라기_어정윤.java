@@ -1,9 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.StringTokenizer;
 
 public class BOJ_21610_마법사상어와비바라기_어정윤 {
@@ -26,49 +23,58 @@ public class BOJ_21610_마법사상어와비바라기_어정윤 {
         }
 
         // 초기 구름 생성
-        List<int[]> clouds = new ArrayList<>();
-        clouds.add(new int[]{n - 1, 0});
-        clouds.add(new int[]{n - 1, 1});
-        clouds.add(new int[]{n - 2, 0});
-        clouds.add(new int[]{n - 2, 1});
+        boolean[][] clouds = new boolean[n][n];
+        clouds[n - 1][0] = true;
+        clouds[n - 1][1] = true;
+        clouds[n - 2][0] = true;
+        clouds[n - 2][1] = true;
 
+        boolean[][] wasThereCloud;
         for (int i = 0; i < m; i++) {
-            boolean[][] wasThereCloud = new boolean[n][n];
+            wasThereCloud = new boolean[n][n];
             stringTokenizer = new StringTokenizer(bufferedReader.readLine());
             int direction = Integer.parseInt(stringTokenizer.nextToken());
             int moveNum = Integer.parseInt(stringTokenizer.nextToken());
-            for (int[] cloud : clouds) {
-                // 1. 모든 구름이 di 방향으로 si칸 이동
-                cloud[0] = (cloud[0] + deltas[direction][0] * moveNum) % n;
-                cloud[1] = (cloud[1] + deltas[direction][1] * moveNum) % n;
-                // 2. 각 구름에서 비가 내려 구름이 있는 칸의 바구니에 저장된 물의 양 1 증가
-                map[cloud[0]][cloud[1]]++;
-                // 3. 구름이 사라짐
-                wasThereCloud[cloud[0]][cloud[1]] = true;
+            for (int x = 0; x < n; x++) {
+                for (int y = 0; y < n; y++) {
+                    if (clouds[x][y]) {
+                        // 1. 모든 구름이 di 방향으로 si칸 이동
+                        int nextX = (x + deltas[direction][0] * moveNum) % n;
+                        int nextY = (y + deltas[direction][1] * moveNum) % n;
+                        wasThereCloud[nextX][nextY] = true;
+                        // 2. 각 구름에서 비가 내려 구름이 있는 칸의 바구니에 저장된 물의 양 1 증가
+                        map[nextX][nextY]++;
+                    }
+                }
             }
 
             // 4. 대각선 방향으로 거리가 1인 칸에 물이 있는 바구니의 수만큼 (r,c)에 있는 바구니의 물의 양 증가
-            for (int[] cloud : clouds) {
-                int x = cloud[0];
-                int y = cloud[1];
-                int basketWithWater = 0;
-                for (int[] diagonal : diagonals) {
-                    int dx = x + diagonal[0];
-                    int dy = y + diagonal[1];
-                    if (dx >= 0 && dx < n && dy >= 0 && dy < n && map[dx][dy] != 0) {
-                        basketWithWater++;
+            for (int x = 0; x < n; x++) {
+                for (int y = 0; y < n; y++) {
+                    if (wasThereCloud[x][y]) {
+                        int basketWithWater = 0;
+                        for (int[] diagonal : diagonals) {
+                            int dx = x + diagonal[0];
+                            int dy = y + diagonal[1];
+                            if (dx >= 0 && dx < n && dy >= 0 && dy < n && map[dx][dy] != 0) {
+                                basketWithWater++;
+                            }
+                        }
+                        map[x][y] += basketWithWater;
                     }
                 }
-                map[x][y] += basketWithWater;
             }
 
-            // 5. 새로운 구름 생성
-            clouds.clear();
-            for (int j = 0; j < n; j++) {
-                for (int k = 0; k < n; k++) {
-                    if (map[j][k] >= 2 && !wasThereCloud[j][k]) {
-                        clouds.add(new int[]{j, k});
-                        map[j][k] -= 2;
+            for (int x = 0; x < n; x++) {
+                for (int y = 0; y < n; y++) {
+                    // 3. 구름이 사라짐
+                    if (clouds[x][y]) {
+                        clouds[x][y] = false;
+                    }
+                    // 5. 새로운 구름 생성
+                    if (map[x][y] >= 2 && !wasThereCloud[x][y]) {
+                        clouds[x][y] = true;
+                        map[x][y] -= 2;
                     }
                 }
             }
