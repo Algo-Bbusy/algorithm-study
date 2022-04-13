@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class BOJ_15685_사다리조작_실패_박기윤 {
+public class BOJ_15684_사다리조작_실패_박기윤 {
 	static final int LINE = 1;
 	static final int NOLINE = 0;
 	static final int ADDEDLINE = 2;
@@ -62,6 +62,7 @@ public class BOJ_15685_사다리조작_실패_박기윤 {
 			if (isConnected[r][c])
 				continue;
 
+			// 가로선 놓기
 			selected[count][0] = r;
 			selected[count][1] = c;
 			if (state[r][c] == 0)
@@ -70,7 +71,7 @@ public class BOJ_15685_사다리조작_실패_박기윤 {
 				state[r][c + 1] = ADDEDLINE;
 			isConnected[r][c] = true;
 
-			// 다음 라인 놓기
+			// 다음 가로선 놓으러 가기
 			setLine(i + 1, count + 1, limit);
 
 			// 원래대로 되돌려 놓기
