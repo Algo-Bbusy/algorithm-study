@@ -49,7 +49,7 @@ public class BOJ_12851_숨바꼭질2_박기윤 {
 			int second = info.second;
 			
 			if (second > minTime) // 최소 시간을 넘었다면 더 볼 필요가 없음
-				continue;
+				break;
 			
 			isVisited[current] = true;
 
