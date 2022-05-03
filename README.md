@@ -197,3 +197,9 @@
 - [BOJ_2512_예산](day23/BOJ_2512_예산/)
 - [BOJ_17142_연구소 3](day23/BOJ_17142_연구소3/)
 </details>
+<details>
+    <summary>24일차</summary>
+
+- [BOJ_1513_경로 찾기](day24/BOJ_1513_경로찾기/)
+- [BOJ_17142_연구소 3](day24/BOJ_21608_상어초등학교/)
+</details>
