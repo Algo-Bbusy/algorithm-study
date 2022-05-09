@@ -1,6 +1,6 @@
 public class Programmers_2020_Kakao_문자열압축_어정윤 {
 
-    public static int solution(String s) {
+    public int solution(String s) {
         int answer = s.length();
         int len = answer;
         int end = answer / 2;
@@ -12,7 +12,7 @@ public class Programmers_2020_Kakao_문자열압축_어정윤 {
             int idx = 0;
             while (idx < len) {
                 int cnt = 1;
-                if (idx + compressCnt >= len) {
+                if (idx + compressCnt > len) {
                     compress.append(s.substring(idx));
                     if (answer > compress.length()) {
                         answer = compress.length();
