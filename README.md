@@ -215,3 +215,9 @@
 - [Programmers_2022_Kakao_주차 요금 계산](day26/Programmers_2022_Kakao_주차요금계산/)
 - [Programmers_summer&winter_internship_배달](day26/Programmers_summer&winter_internship_배달/)
 </details>
+<details>
+    <summary>27일차</summary>
+
+- [BOJ_1707_이분 그래프](day27/BOJ_1707_이분그래프/)
+- [BOJ_17779_게리맨더링 2](day27/BOJ_17779_게리맨더링2/)
+</details>
