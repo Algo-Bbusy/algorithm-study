@@ -221,3 +221,9 @@
 - [BOJ_1707_이분 그래프](day27/BOJ_1707_이분그래프/)
 - [BOJ_17779_게리맨더링 2](day27/BOJ_17779_게리맨더링2/)
 </details>
+<details>
+    <summary>28일차</summary>
+
+- [BOJ_1874_스택 수열](day28/BOJ_1874_스택수열/)
+- [Programmers_2020_Kakao_자물쇠와열쇠](day28/Programmers_2020_Kakao_자물쇠와열쇠/)
+</details>
