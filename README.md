@@ -227,3 +227,8 @@
 - [BOJ_1874_스택 수열](day28/BOJ_1874_스택수열/)
 - [Programmers_2020_Kakao_자물쇠와열쇠](day28/Programmers_2020_Kakao_자물쇠와열쇠/)
 </details>
+<details>
+    <summary>29일차</summary>
+
+- [BOJ_3273_두 수의 합](day29/BOJ_3273_두수의합/)
+</details>
