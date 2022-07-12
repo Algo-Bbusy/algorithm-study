@@ -232,3 +232,8 @@
 
 - [BOJ_3273_두 수의 합](day29/BOJ_3273_두수의합/)
 </details>
+<details>
+    <summary>30일차</summary>
+
+- [BOJ_1107_리모컨](day30/BOJ_1107_리모컨/)
+</details>
