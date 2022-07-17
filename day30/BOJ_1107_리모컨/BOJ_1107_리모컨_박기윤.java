@@ -39,7 +39,7 @@ public class Main_BJ_1107_리모컨 {
         else minCnt = Math.min(minCnt, count + (goal - currentChannel));
 
         // 직접 채널 입력
-        if (count <= goalLen) { // <이걸로해서 틀렸습니다 여러번~
+        if (count <= goalLen) { 
             for (int i = 0; i <= 9; i++) {
                 if (isBroken[i]) continue;
                 if (!isPressedChannel) moveChannel(i, true, count + 1); // 이전에 입력한 채널이 없는 경우
