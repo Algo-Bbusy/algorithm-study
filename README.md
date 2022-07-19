@@ -237,3 +237,8 @@
 
 - [BOJ_1107_리모컨](day30/BOJ_1107_리모컨/)
 </details>
+<details>
+    <summary>31일차</summary>
+
+- [BOJ_2146_다리 만들기](day31/BOJ_2146_다리만들기/)
+</details>
