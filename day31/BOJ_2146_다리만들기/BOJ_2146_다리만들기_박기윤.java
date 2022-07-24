@@ -3,7 +3,7 @@ package BOJ.Graph;
 import java.io.*;
 import java.util.*;
 
-public class Main_BJ_2146_다리만들기 {
+public class BOJ_2146_다리만들기_박기윤 {
     private static final int SEA = 0;
     private static final int LAND = 1;
     static int N, min;
