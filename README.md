@@ -242,3 +242,8 @@
 
 - [BOJ_2146_다리 만들기](day31/BOJ_2146_다리만들기/)
 </details>
+<details>
+    <summary>32일차</summary>
+
+- [BOJ_2146_문자열 게임 2](day32/BOJ_20437_문자열게임2/)
+</details>
