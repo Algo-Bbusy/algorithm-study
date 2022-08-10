@@ -247,3 +247,8 @@
 
 - [BOJ_2146_문자열 게임 2](day32/BOJ_20437_문자열게임2/)
 </details>
+<details>
+    <summary>33일차</summary>
+
+- [BOJ_16918_봄버맨](day33/BOJ_16918_봄버맨/)
+</details>
