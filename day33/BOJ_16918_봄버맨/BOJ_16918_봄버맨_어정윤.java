@@ -5,10 +5,33 @@ import java.util.*;
 
 public class BOJ_16918_봄버맨_어정윤 {
 
+    static class Bomb {
+
+        private int x;
+        private int y;
+
+        public Bomb(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Bomb bomb = (Bomb) o;
+            return x == bomb.x && y == bomb.y;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(x, y);
+        }
+    }
+
     private static final int[][] DELTAS = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
     private static final char BOMB = 'O';
     private static final char EMPTY = '.';
-    private static final int INSTALLED_TIME = 2;
 
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
@@ -17,7 +40,7 @@ public class BOJ_16918_봄버맨_어정윤 {
         int c = Integer.parseInt(stringTokenizer.nextToken());
         int n = Integer.parseInt(stringTokenizer.nextToken());
         char[][] map = new char[r][c];
-        Queue<int[]> bombs = new LinkedList<>();
+        Map<Bomb, Integer> bombs = new HashMap<>();
         int time = 0;
         for (int i = 0; i < r; i++) {
             String inputLine = bufferedReader.readLine();
@@ -25,7 +48,7 @@ public class BOJ_16918_봄버맨_어정윤 {
                 char input = inputLine.charAt(j);
                 map[i][j] = input;
                 if (input == BOMB) {
-                    bombs.offer(new int[]{i, j, time});
+                    bombs.put(new Bomb(i, j), time + 3);
                 }
             }
         }
@@ -41,28 +64,29 @@ public class BOJ_16918_봄버맨_어정윤 {
         print(r, c, map);
     }
 
-    private static void explode(char[][] map, int r, int c, int time, Queue<int[]> bombs) {
-        while (time - bombs.peek()[INSTALLED_TIME] == 3) {
-            int[] bomb = bombs.poll();
-            int x = bomb[0];
-            int y = bomb[1];
-            map[x][y] = EMPTY;
-            for (int[] delta : DELTAS) {
-                int dx = x + delta[0];
-                int dy = y + delta[1];
-                if (dx >= 0 && dx < r && dy >= 0 && dy < c && map[dx][dy] == BOMB) {
-                    map[dx][dy] = EMPTY;
+    private static void explode(char[][] map, int r, int c, int time, Map<Bomb, Integer> bombs) {
+        bombs.forEach((bomb, explodedTime) -> {
+            if (explodedTime == time) {
+                int x = bomb.x;
+                int y = bomb.y;
+                map[x][y] = EMPTY;
+                for (int[] delta : DELTAS) {
+                    int dx = x + delta[0];
+                    int dy = y + delta[1];
+                    if (dx >= 0 && dx < r && dy >= 0 && dy < c && map[dx][dy] == BOMB) {
+                        map[dx][dy] = EMPTY;
+                    }
                 }
             }
-        }
+        });
     }
 
-    private static void installBomb(char[][] map, int r, int c, int time, Queue<int[]> bombs) {
+    private static void installBomb(char[][] map, int r, int c, int time, Map<Bomb, Integer> bombs) {
         for (int i = 0; i < r; i++) {
             for (int j = 0; j < c; j++) {
                 if (map[i][j] == EMPTY) {
                     map[i][j] = BOMB;
-                    bombs.offer(new int[]{i, j, time});
+                    bombs.put(new Bomb(i, j), time + 3);
                 }
             }
         }
