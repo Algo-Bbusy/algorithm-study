@@ -252,3 +252,8 @@
 
 - [BOJ_16918_봄버맨](day33/BOJ_16918_봄버맨/)
 </details>
+<details>
+    <summary>34일차</summary>
+
+- [BOJ_1012_유기농 배추](day34/BOJ_1012_유기농배추/)
+</details>
