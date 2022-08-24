@@ -1,6 +1,6 @@
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Programmers_summer&winter_internship_영어끝말잇기_어정윤 {
 
@@ -12,15 +12,15 @@ public class Programmers_summer&winter_internship_영어끝말잇기_어정윤 {
 
     public static int[] solution(int n, String[] words) {
         int[] answer = new int[2];
-        Map<String, Integer> toldWord = new HashMap<>();
+        Set<String> toldWord = new HashSet<>();
         int length = words.length;
         for (int turn = 0; turn < length; turn++) {
             String word = words[turn];
-            if (toldWord.containsKey(word)) {
+            if (toldWord.contains(word)) {
                 updateAnswer(n, answer, turn);
                 break;
             } else {
-                toldWord.put(word, 1);
+                toldWord.add(word);
             }
         }
         if (answer[0] == 0) {
