@@ -260,10 +260,15 @@
 <details>
     <summary>35일차</summary>
 
-- [Programmers_summer&winter_internship_영어끝말잇기](day35/Programmers_summer&winter_internship_영어끝말잇기/)
+- [Programmers_summer&winter_internship_영어 끝말잇기](day35/Programmers_summer&winter_internship_영어끝말잇기/)
 </details>
 <details>
     <summary>36일차</summary>
 
 - [BOJ_6087_레이저 통신](day36/BOJ_6087_레이저통신/)
+</details>
+<details>
+    <summary>37일차</summary>
+
+- [Programmers_2022_Kakao_양과 늑대](day37/Programmers_2022_Kakao_양과늑대/)
 </details>
