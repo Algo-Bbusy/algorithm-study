@@ -18,8 +18,7 @@ public class Main_BJ_1080_행렬 {
         setMatrix(matrixA);
         setMatrix(matrixB);
         reverse(matrixA, matrixB);
-        if (!isEqual(matrixA, matrixB))
-            count = -1;
+        if (!isEqual(matrixA, matrixB)) count = -1;
         bw.write(Integer.toString(count));
         br.close();
         bw.flush();
@@ -54,9 +53,8 @@ public class Main_BJ_1080_행렬 {
     }
 
     private static void setMatrix(int[][] matrix) throws IOException {
-        String line = "";
         for (int r = 0; r < N; r++) {
-            line = br.readLine();
+            String line = br.readLine();
             for (int c = 0; c < M; c++) {
                 matrix[r][c] = line.charAt(c) - '0';
             }
