@@ -7,7 +7,7 @@ public class BOJ_1080_행렬_어정윤 {
 
     private static int n;
     private static int m;
-    private static int minChange;
+    private static int flipCount;
 
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
@@ -18,14 +18,28 @@ public class BOJ_1080_행렬_어정윤 {
         int[][] B = new int[n][m];
         input(bufferedReader, n, m, A);
         input(bufferedReader, n, m, B);
-        if (n < 3 || m < 3) {
-            if (!isSame(A, B)) {
-                minChange = -1;
+        if (n >= 3 && m >= 3) {
+            for (int i = 0; i < n - 2; i++) {
+                for (int j = 0; j < m - 2; j++) {
+                    if (A[i][j] != B[i][j]) {
+                        flip(A, i, j);
+                        flipCount++;
+                    }
+                }
             }
-        } else {
-            // 구현X
         }
-        System.out.println(minChange);
+        if (!isSame(A, B)) {
+            flipCount = -1;
+        }
+        System.out.println(flipCount);
+    }
+
+    private static void flip(int[][] A, int x, int y) {
+        for (int i = x; i < x + 3; i++) {
+            for (int j = y; j < y + 3; j++) {
+                A[i][j] = Math.abs(A[i][j] - 1);
+            }
+        }
     }
 
     private static boolean isSame(int[][] A, int[][] B) {
