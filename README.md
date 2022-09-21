@@ -277,3 +277,8 @@
 
 - [BOJ_1080_행렬](day38/BOJ_1080_행렬/)
 </details>
+<details>
+    <summary>39일차</summary>
+
+- [BOJ_3055_탈출](day39/BOJ_3055_탈출/)
+</details>
