@@ -282,3 +282,8 @@
 
 - [BOJ_3055_탈출](day39/BOJ_3055_탈출/)
 </details>
+<details>
+    <summary>40일차</summary>
+
+- [BOJ_2062_돌다리 건너기](day40/BOJ_2062_돌다리건너기/)
+</details>
