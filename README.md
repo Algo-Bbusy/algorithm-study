@@ -287,3 +287,8 @@
 
 - [BOJ_2062_돌다리 건너기](day40/BOJ_2062_돌다리건너기/)
 </details>
+<details>
+    <summary>41일차</summary>
+
+- [BOJ_2234_성곽](day41/BOJ_2234_성곽/)
+</details>
