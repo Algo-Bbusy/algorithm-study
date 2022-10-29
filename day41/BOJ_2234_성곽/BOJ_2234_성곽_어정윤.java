@@ -1,17 +1,16 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayDeque;
-import java.util.Arrays;
-import java.util.Queue;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class BOJ_2234_성곽_어정윤 {
 
+    private static final Map<Integer, Integer> AREAS = new HashMap<>();
     private static final int[][] DELTAS = {{0, -1}, {-1, 0}, {0, 1}, {1, 0}};
     private static final int EMPTY = 0;
 
     private static int[][] castle;
+    private static int[][] rooms;
     private static int n;
     private static int m;
     private static int room;
@@ -30,21 +29,23 @@ public class BOJ_2234_성곽_어정윤 {
                 castle[i][j] = Integer.parseInt(stringTokenizer.nextToken());
             }
         }
+        rooms = new int[m][n];
         searchCastle();
+        searchCastleWithBreakingWall();
         System.out.printf("%d\n%d\n%d", room, maxArea, maxAreaWithBrokenWall);
     }
 
     private static void searchCastle() {
         Queue<int[]> queue = new ArrayDeque<>();
         boolean[][] isVisited = new boolean[m][n];
-        Queue<int[]> queueWithBreakingWall = new ArrayDeque<>();
-        boolean[][] isVisitedWithBreakingWall = new boolean[m][n];
+        int roomNumber = 1;
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (!isVisited[i][j]) {
                     room++;
                     queue.offer(new int[]{i, j});
                     isVisited[i][j] = true;
+                    rooms[i][j] = roomNumber;
                     int area = 1;
                     while (!queue.isEmpty()) {
                         int[] current = queue.poll();
@@ -57,47 +58,30 @@ public class BOJ_2234_성곽_어정윤 {
                                 if (dx >= 0 && dx < m && dy >= 0 && dy < n && !isVisited[dx][dy]) {
                                     queue.offer(new int[]{dx, dy});
                                     isVisited[dx][dy] = true;
+                                    rooms[dx][dy] = roomNumber;
                                     area++;
                                 }
-                            } else {
-                                queueWithBreakingWall.offer(new int[]{x, y});
-                                isVisitedWithBreakingWall[x][y] = true;
-                                castle[x][y] &= ~(1 << direction);
-                                breakWall(area, queueWithBreakingWall, isVisited, isVisitedWithBreakingWall);
-                                castle[x][y] |= (1 << direction);
                             }
                         }
                     }
+                    AREAS.put(roomNumber++, area);
                     maxArea = Math.max(maxArea, area);
                 }
             }
         }
     }
 
-    private static void breakWall(int area, Queue<int[]> queueWithBreakingWall, boolean[][] isVisited, boolean[][] isVisitedWithBreakingWall) {
-        while (!queueWithBreakingWall.isEmpty()) {
-            int[] current = queueWithBreakingWall.poll();
-            int x = current[0];
-            int y = current[1];
-            for (int direction = 0, deltasLength = DELTAS.length; direction < deltasLength; direction++) {
-                if ((castle[x][y] & (1 << direction)) == EMPTY) {
-                    int dx = x + DELTAS[direction][0];
-                    int dy = y + DELTAS[direction][1];
-                    if (dx >= 0 && dx < m && dy >= 0 && dy < n && !isVisited[dx][dy] && !isVisitedWithBreakingWall[dx][dy]) {
-                        queueWithBreakingWall.offer(new int[]{dx, dy});
-                        isVisitedWithBreakingWall[dx][dy] = true;
-                        area++;
+    private static void searchCastleWithBreakingWall() {
+        for (int x = 0; x < m; x++) {
+            for (int y = 0; y < n; y++) {
+                for (int[] delta : DELTAS) {
+                    int dx = x + delta[0];
+                    int dy = y + delta[1];
+                    if (dx >= 0 && dx < m && dy >= 0 && dy < n && rooms[x][y] != rooms[dx][dy]) {
+                        maxAreaWithBrokenWall = Math.max(maxAreaWithBrokenWall, AREAS.get(rooms[x][y]) + AREAS.get(rooms[dx][dy]));
                     }
                 }
             }
-        }
-        maxAreaWithBrokenWall = Math.max(maxAreaWithBrokenWall, area);
-        initailize(isVisitedWithBreakingWall);
-    }
-
-    private static void initailize(boolean[][] isVisitedWithBreakingWall) {
-        for (int i = 0; i < m; i++) {
-            Arrays.fill(isVisitedWithBreakingWall[i], false);
         }
     }
 }
