@@ -72,13 +72,15 @@ public class BOJ_2234_성곽_어정윤 {
     }
 
     private static void searchCastleWithBreakingWall() {
+        boolean[][] isVisited = new boolean[m][n];
         for (int x = 0; x < m; x++) {
             for (int y = 0; y < n; y++) {
                 for (int[] delta : DELTAS) {
                     int dx = x + delta[0];
                     int dy = y + delta[1];
-                    if (dx >= 0 && dx < m && dy >= 0 && dy < n && rooms[x][y] != rooms[dx][dy]) {
+                    if (dx >= 0 && dx < m && dy >= 0 && dy < n && rooms[x][y] != rooms[dx][dy] && !isVisited[dx][dy]) {
                         maxAreaWithBrokenWall = Math.max(maxAreaWithBrokenWall, AREAS.get(rooms[x][y]) + AREAS.get(rooms[dx][dy]));
+                        isVisited[dx][dy] = true;
                     }
                 }
             }
