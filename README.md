@@ -10,12 +10,13 @@
 
 👩🏻‍💻 [어정윤](https://github.com/jeongyuneo)
 
+👩🏻‍💻 [정세미](https://github.com/smj53)
+
 ## 📅 Meeting
-- 화요일 21:00 ~ 23:00
-- 토요일 14:00 ~ 16:00
+- 일요일 13:00 ~ 15:00
 
 ## 📌 Rule
-1. 과제 제출 기한 : 다음 스터디 시작 2시간 전까지
+1. 과제 제출 기한 : 스터디 시작 전까지
 2. 과제 제출 양식
    - 파일명 : 문제출처_문제번호_문제제목_이름
    - 커밋 메시지 : 문제출처_문제번호_문제제목_이름
@@ -36,6 +37,7 @@
 6. 스터디 시작 전 일상토크의 시간 5분 내외
 
 ## 📚 Study
+[📂 문제 모아보기](https://feline-lotus-6cd.notion.site/78098bddc9b846ccaafadbe5fb092da9?v=504147b00fc2498ea51522416f18a52d)
 <details>
     <summary>0일차</summary>
 
@@ -291,4 +293,9 @@
     <summary>41일차</summary>
 
 - [BOJ_2234_성곽](day41/BOJ_2234_성곽/)
+</details>
+<details>
+    <summary>42일차</summary>
+
+- [BOJ_12100_2048 (Easy)](day42/BOJ_12100_2048(Easy)/)
 </details>
