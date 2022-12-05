@@ -312,5 +312,10 @@
 <details>
     <summary>45일차</summary>
 
-- [BOJ_21944_문제추천시스템Version2](day45/BOJ_21944_문제추천시스템Version2/)
+- [BOJ_21944_문제 추천 시스템 Version 2](day45/BOJ_21944_문제추천시스템Version2/)
+</details>
+<details>
+    <summary>46일차</summary>
+
+- [BOJ_14968_전생했더니 슬라임 연구자였던 건에 대하여 (Hard)](day46/BOJ_14698_전생했더니슬라임연구자였던건에대하여(Hard)/)
 </details>
